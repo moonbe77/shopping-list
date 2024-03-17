@@ -1,19 +1,8 @@
 import { defineDb, defineTable, column } from "astro:db";
-
-const Author = defineTable({
-  columns: {
-    id: column.number({ primaryKey: true }),
-    name: column.text(),
-  },
-});
-
-const Comment = defineTable({
-  columns: {
-    authorId: column.number({ references: () => Author.columns.id }),
-    content: column.text(),
-  },
-});
+import { Product } from "./productTable";
+import { Author } from "./authorTable";
+import { Comment } from "./commentTable";
 
 export default defineDb({
-  tables: { Comment, Author },
+  tables: { Comment, Author, Product },
 });
